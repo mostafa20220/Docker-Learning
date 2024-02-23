@@ -2,6 +2,7 @@ services:
   app:
     build:
       context: .
+    image: mostafah01/tresmerge
     restart: always
     env_file:
       - .env

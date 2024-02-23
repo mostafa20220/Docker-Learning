@@ -13,9 +13,14 @@ connectMongo();
 const app = express();
 const httpServer = createServer(app);
 
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+} else {
+  app.use(morgan("common"));
+}
+
 app.use(cors());
 app.use(express.json());
-app.use(morgan("dev"));
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello MOM with redis, postgresDB, mongoDB, mongo-express!");
