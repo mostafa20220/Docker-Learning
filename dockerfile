@@ -12,5 +12,5 @@ RUN npm install
 CMD ["npm", "run", "docker-dev"]
 
 FROM base as production
-RUN npm install --only=production
+RUN npm install --omit=dev
 CMD ["npm", "run", "docker-prod"]

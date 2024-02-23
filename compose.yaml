@@ -3,8 +3,6 @@ services:
     build:
       context: .
     restart: always
-    # ports:
-      # - "3000:3000"
     env_file:
       - .env
     depends_on:
@@ -51,17 +49,9 @@ services:
   postgres:
     image: postgres
     restart: always
-    # set shared memory limit when using docker-compose
-    # shm_size: 128mb
-    # or set shared memory limit when deploy via swarm stack
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    #  - type: tmpfs
-    #    target: /dev/shm
-    #    tmpfs:
-    #      size: 134217728 # 128*2^20 bytes = 128Mb
     environment:
-      # POSTGRES_USER: root
       POSTGRES_PASSWORD: example
       POSTGRES_DB: app
 
